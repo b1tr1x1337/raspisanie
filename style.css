@@ -17,16 +17,43 @@ body.dark {
     color: #e0e0e0;
 }
 
+.flag-top, .flag-bottom {
+    display: flex;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+}
+
+.flag-top {
+    top: 0;
+}
+
+.flag-bottom {
+    bottom: 0;
+}
+
+.flag-white, .flag-blue, .flag-red {
+    flex: 1;
+    height: 4px;
+}
+
+.flag-white { background: #fff; }
+.flag-blue { background: #0039a6; }
+.flag-red { background: #d52b1e; }
+
+body.dark .flag-white { background: #e0e0e0; }
+body.dark .flag-top, body.dark .flag-bottom { opacity: 0.6; }
+
 .container {
     max-width: 900px;
     margin: 0 auto;
-    padding: 16px;
+    padding: 20px 16px 40px;
 }
 
 header {
-    background: linear-gradient(135deg, #0039a6 0%, #0050d4 100%);
+    background: linear-gradient(135deg, #0039a6 0%, #002680 100%);
     color: white;
-    padding: 24px;
+    padding: 24px 24px 28px;
     border-radius: 12px;
     margin-bottom: 16px;
     box-shadow: 0 4px 20px rgba(0,57,166,0.3);
@@ -40,8 +67,34 @@ header::after {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    background: linear-gradient(to right, #fff 0%, #fff 33%, #d52b1e 33%, #d52b1e 66%, #0039a6 66%, #0039a6 100%);
+    height: 5px;
+    background: #fff;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: #d52b1e;
+}
+
+.header-eagle {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.eagle-svg {
+    width: 80px;
+    height: 68px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
 }
 
 .header-top {
@@ -52,8 +105,18 @@ header::after {
 }
 
 h1 {
-    font-size: 1.6em;
+    font-size: 1.5em;
     margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-flag {
+    width: 28px;
+    height: 18px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
 }
 
 .subtitle {
@@ -125,12 +188,14 @@ select:focus {
     overflow: hidden;
     transition: background 0.3s;
     border: 1px solid #d5dce6;
+    border-top: 3px solid #0039a6;
 }
 
 body.dark .bell-schedule {
     background: #111827;
     box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     border-color: #1e293b;
+    border-top-color: #60a5fa;
 }
 
 .bell-toggle {
@@ -145,6 +210,17 @@ body.dark .bell-schedule {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.bell-toggle span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bell-icon {
+    width: 18px;
+    height: 18px;
 }
 
 body.dark .bell-toggle {
@@ -226,6 +302,18 @@ main {
     box-shadow: 0 2px 8px rgba(0,57,166,0.06);
     transition: background 0.3s, box-shadow 0.3s;
     border: 1px solid #d5dce6;
+    position: relative;
+    overflow: hidden;
+}
+
+.day-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #0039a6, #d52b1e);
 }
 
 body.dark .day-card {
@@ -239,7 +327,7 @@ body.dark .day-card {
     font-size: 1.1em;
     margin-bottom: 12px;
     padding-bottom: 8px;
-    border-bottom: 2px solid #d5dce6;
+    border-bottom: 2px solid #e8ecf1;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -250,9 +338,20 @@ body.dark .day-card h2 {
     border-bottom-color: #1e293b;
 }
 
+.day-flag {
+    width: 18px;
+    height: 13px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15));
+}
+
+body.dark .day-flag {
+    opacity: 0.8;
+}
+
 .date {
     font-size: 0.78em;
-    font-weight: 500;
+    font-weight: 600;
     color: #fff;
     background: #d52b1e;
     padding: 2px 8px;
@@ -365,42 +464,60 @@ body.dark .teacher {
 
 .footer {
     text-align: center;
-    padding: 24px 16px 12px;
-    color: #888;
-    font-size: 0.85em;
+    padding: 30px 16px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
 }
 
-body.dark .footer {
+.footer-eagle-svg {
+    width: 50px;
+    height: 38px;
+}
+
+.footer-text {
+    color: #888;
+    font-size: 0.85em;
+    font-weight: 500;
+}
+
+body.dark .footer-text {
     color: #666;
 }
 
-.flag-stripe {
-    height: 6px;
-    border-radius: 0 0 12px 12px;
-    margin-top: -12px;
-    background: linear-gradient(to right, #fff 0%, #fff 33.3%, #0039a6 33.3%, #0039a6 66.6%, #d52b1e 66.6%, #d52b1e 100%);
-    opacity: 0.8;
-}
-
-body.dark .flag-stripe {
-    opacity: 0.5;
+.footer-flag {
+    width: 32px;
+    height: 20px;
+    opacity: 0.7;
 }
 
 @media (max-width: 480px) {
     .container {
-        padding: 10px;
+        padding: 14px 10px 36px;
     }
 
     header {
-        padding: 18px;
+        padding: 16px 16px 22px;
+    }
+
+    .eagle-svg {
+        width: 60px;
+        height: 50px;
     }
 
     h1 {
-        font-size: 1.3em;
+        font-size: 1.2em;
+        gap: 6px;
+    }
+
+    .header-flag {
+        width: 22px;
+        height: 14px;
     }
 
     .subtitle {
-        font-size: 0.85em;
+        font-size: 0.82em;
     }
 
     .bell-row {
@@ -416,6 +533,10 @@ body.dark .flag-stripe {
     .day-card {
         padding: 14px 16px;
         border-radius: 10px;
+    }
+
+    .day-card::before {
+        width: 3px;
     }
 
     .day-card h2 {
@@ -439,5 +560,10 @@ body.dark .flag-stripe {
     .meta {
         font-size: 0.78em;
         gap: 6px;
+    }
+
+    .footer-eagle-svg {
+        width: 40px;
+        height: 30px;
     }
 }
