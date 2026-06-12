@@ -214,11 +214,9 @@ function renderSchedule(weekIndex) {
     const data = SCHEDULE_DATA;
     const week = data.weeks[weekIndex];
     const container = document.getElementById('schedule');
-    const flagSvg = `<svg class="day-flag" viewBox="0 0 20 14" xmlns="http://www.w3.org/2000/svg"><rect y="0" width="20" height="4.67" fill="#fff"/><rect y="4.67" width="20" height="4.67" fill="#0039a6"/><rect y="9.33" width="20" height="4.67" fill="#d52b1e"/><rect x="0" y="0" width="20" height="14" fill="none" stroke="#bbb" stroke-width="0.4"/></svg>`;
-
     container.innerHTML = week.days.map(day => `
         <div class="day-card">
-            <h2>${flagSvg}${day.name}<span class="date">${day.date}</span></h2>
+            <h2>${day.name}<span class="date">${day.date}</span></h2>
             ${day.lessons.map(l => `
                 <div class="lesson ${l.pair ? '' : 'daily'}">
                     <div class="time">${l.time}</div>
