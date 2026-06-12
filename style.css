@@ -1,0 +1,402 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f0f2f5;
+    color: #1a1a2e;
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+}
+
+body.dark {
+    background: #0f0f1a;
+    color: #e0e0e0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+header {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+    color: white;
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+h1 {
+    font-size: 1.6em;
+    margin-bottom: 2px;
+}
+
+.subtitle {
+    opacity: 0.9;
+    font-size: 0.95em;
+}
+
+.theme-toggle {
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.3s, transform 0.3s;
+    padding: 0;
+}
+
+.theme-toggle:hover {
+    background: rgba(255,255,255,0.25);
+    transform: scale(1.1);
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    color: white;
+}
+
+.icon-moon { display: none; }
+body.dark .icon-sun { display: none; }
+body.dark .icon-moon { display: block; }
+
+.filters {
+    margin-top: 16px;
+}
+
+select {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 15px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 8px;
+    background: white;
+    color: #1a1a2e;
+    cursor: pointer;
+    font-weight: 500;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+}
+
+select:focus {
+    outline: none;
+    border-color: rgba(255,255,255,0.7);
+}
+
+.bell-schedule {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    overflow: hidden;
+    transition: background 0.3s;
+}
+
+body.dark .bell-schedule {
+    background: #1a1a2e;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.bell-toggle {
+    width: 100%;
+    padding: 16px 20px;
+    background: none;
+    border: none;
+    font-size: 1em;
+    font-weight: 600;
+    color: #1e3a5f;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body.dark .bell-toggle {
+    color: #7db8e0;
+}
+
+.bell-arrow {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s;
+}
+
+.bell-schedule.open .bell-arrow {
+    transform: rotate(180deg);
+}
+
+.bell-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.bell-schedule.open .bell-content {
+    max-height: 500px;
+}
+
+.bell-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    padding: 10px 20px;
+    border-top: 1px solid #f0f2f5;
+    font-size: 0.92em;
+}
+
+body.dark .bell-row {
+    border-top-color: #2a2a3e;
+}
+
+.bell-header {
+    font-weight: 700;
+    color: #666;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+body.dark .bell-header {
+    color: #888;
+}
+
+.bell-time {
+    font-weight: 600;
+    color: #1e3a5f;
+}
+
+body.dark .bell-time {
+    color: #7db8e0;
+}
+
+.bell-break .bell-lesson {
+    font-weight: 600;
+    color: #c0392b;
+}
+
+body.dark .bell-break .bell-lesson {
+    color: #e74c3c;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.day-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+body.dark .day-card {
+    background: #1a1a2e;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.day-card h2 {
+    color: #1e3a5f;
+    font-size: 1.1em;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e8ecf1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+body.dark .day-card h2 {
+    color: #7db8e0;
+    border-bottom-color: #2a2a3e;
+}
+
+.date {
+    font-size: 0.78em;
+    font-weight: 500;
+    color: #888;
+    background: #f0f2f5;
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+
+body.dark .date {
+    background: #2a2a3e;
+    color: #aaa;
+}
+
+.lesson {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f2f5;
+    align-items: flex-start;
+}
+
+body.dark .lesson {
+    border-bottom-color: #2a2a3e;
+}
+
+.lesson:last-child {
+    border-bottom: none;
+}
+
+.lesson.daily {
+    background: #f8f9fb;
+    margin: 0 -20px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border-bottom: none;
+    margin-bottom: 4px;
+}
+
+body.dark .lesson.daily {
+    background: #15152a;
+}
+
+.time {
+    font-weight: 600;
+    color: #1e3a5f;
+    font-size: 0.9em;
+    line-height: 1.3;
+}
+
+body.dark .time {
+    color: #7db8e0;
+}
+
+.lesson.daily .time {
+    color: #666;
+    font-size: 0.85em;
+}
+
+body.dark .lesson.daily .time {
+    color: #777;
+}
+
+.name {
+    font-weight: 600;
+    font-size: 0.95em;
+    margin-bottom: 3px;
+    line-height: 1.3;
+}
+
+.meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 0.82em;
+    color: #666;
+}
+
+body.dark .meta {
+    color: #999;
+}
+
+.pair {
+    background: #e8ecf1;
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+body.dark .pair {
+    background: #2a2a3e;
+}
+
+.room {
+    color: #2d5a87;
+    font-weight: 500;
+}
+
+body.dark .room {
+    color: #7db8e0;
+}
+
+.teacher {
+    color: #444;
+}
+
+body.dark .teacher {
+    color: #bbb;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    header {
+        padding: 18px;
+    }
+
+    h1 {
+        font-size: 1.3em;
+    }
+
+    .subtitle {
+        font-size: 0.85em;
+    }
+
+    .bell-row {
+        grid-template-columns: 110px 1fr;
+        padding: 8px 16px;
+        font-size: 0.85em;
+    }
+
+    .bell-toggle {
+        padding: 14px 16px;
+    }
+
+    .day-card {
+        padding: 14px 16px;
+        border-radius: 10px;
+    }
+
+    .day-card h2 {
+        font-size: 1em;
+        flex-wrap: wrap;
+    }
+
+    .lesson {
+        grid-template-columns: 80px 1fr;
+        gap: 8px;
+    }
+
+    .time {
+        font-size: 0.82em;
+    }
+
+    .name {
+        font-size: 0.9em;
+    }
+
+    .meta {
+        font-size: 0.78em;
+        gap: 6px;
+    }
+}

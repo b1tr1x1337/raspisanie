@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание — ОГАПОУ «ВИТ»</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <div>
+                    <h1>ОГАПОУ «ВИТ»</h1>
+                    <p class="subtitle">Расписание занятий — группа 12 э (2 курс)</p>
+                </div>
+                <button id="themeToggle" class="theme-toggle" title="Сменить тему">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
+            <div class="filters">
+                <select id="weekSelect"></select>
+            </div>
+        </header>
+
+        <section class="bell-schedule" id="bellSchedule">
+            <button class="bell-toggle" id="bellToggle">
+                <span>Расписание звонков</span>
+                <svg class="bell-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="bell-content" id="bellContent">
+                <div class="bell-row bell-header">
+                    <span class="bell-time">Время</span>
+                    <span class="bell-lesson">Занятие</span>
+                </div>
+                <div class="bell-row"><span class="bell-time">8:15 — 8:30</span><span class="bell-lesson">Урок безопасности</span></div>
+                <div class="bell-row"><span class="bell-time">8:30 — 9:15</span><span class="bell-lesson">1-й урок</span></div>
+                <div class="bell-row"><span class="bell-time">9:20 — 10:05</span><span class="bell-lesson">2-й урок</span></div>
+                <div class="bell-row"><span class="bell-time">10:15 — 11:00</span><span class="bell-lesson">3-й урок</span></div>
+                <div class="bell-row bell-break"><span class="bell-time">11:00 — 11:20</span><span class="bell-lesson">Обед (3, 4 курс)</span></div>
+                <div class="bell-row"><span class="bell-time">11:20 — 12:05</span><span class="bell-lesson">4-й урок</span></div>
+                <div class="bell-row bell-break"><span class="bell-time">12:05 — 12:25</span><span class="bell-lesson">Обед (1, 2 курс)</span></div>
+                <div class="bell-row"><span class="bell-time">12:25 — 13:10</span><span class="bell-lesson">5-й урок</span></div>
+                <div class="bell-row"><span class="bell-time">13:15 — 14:00</span><span class="bell-lesson">6-й урок</span></div>
+                <div class="bell-row"><span class="bell-time">14:10 — 14:55</span><span class="bell-lesson">7-й урок</span></div>
+                <div class="bell-row"><span class="bell-time">15:00 — 15:45</span><span class="bell-lesson">8-й урок</span></div>
+            </div>
+        </section>
+
+        <main id="schedule"></main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
